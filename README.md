@@ -2,4 +2,4 @@
 
 - 🔭 I’m currently working on my websites
  
-- 🩺 master’s In Progress
+- 🩺 msms In Progress
