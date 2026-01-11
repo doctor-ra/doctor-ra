@@ -1,5 +1,5 @@
 ### Hi there 👋
 
-- 🔭 I’m currently working on my websites
+- 🔭 I’m currently working on my website
  
-- 🩺 msms In Progress
+- 🩺 msms in progress
