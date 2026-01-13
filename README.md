@@ -1,3 +1,3 @@
 ### Hi there 👋
  
-- 🩺 msms in progress
+- 🩺 in progress
