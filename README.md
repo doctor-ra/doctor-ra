@@ -1,3 +1,3 @@
 ### Hi there
 
-One goal: 🧠🧑‍⚕️
+goal: 🧠🧑‍⚕️
