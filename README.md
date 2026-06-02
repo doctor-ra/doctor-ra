@@ -1,3 +1,3 @@
 Goal: 🔪🧠🩺
 ……………….
-- Ivy bet
+- Ivy win
