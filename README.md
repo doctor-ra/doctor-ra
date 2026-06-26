@@ -1,3 +1,3 @@
 Goal: 🔪🧠🩺
 ……………….
-- hointy
+- good point
