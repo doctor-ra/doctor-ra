@@ -1,3 +1,3 @@
 Goal: 🔪🧠🩺
 ……………….
-- good point
+- goodie
