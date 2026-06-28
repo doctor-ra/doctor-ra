@@ -1,3 +1,3 @@
 Goal: 🔪🧠🩺
 ……………….
-- goodie
+- Goode
