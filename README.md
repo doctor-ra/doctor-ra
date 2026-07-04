@@ -4,7 +4,7 @@
 🛠 Somewhere along the way, I picked up a real love for programming
 
 - 🌐 **[My website](https://doctor-ra.github.io/doctor-ra/)** — my story, my projects, and occasional writing
-- 📫 investicord@gmail.com
+- 📫 
 
 **A few things I've built:**
 - 🔬 [NURP](https://github.com/doctor-ra/NURP) — research data analysis in Jupyter notebooks
