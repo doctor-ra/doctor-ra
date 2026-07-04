@@ -69,7 +69,7 @@ If Rohit buys a custom domain later, only two things change:
 
 1. In `astro.config.mjs`, update `site` to the new domain and change `base` to `'/'` (project
    pages need a base path; a custom domain at the root doesn't).
-2. Add a `public/CNAME` file containing the domain name (e.g. `rohitanumula.com`).
+2. Add a `public/CNAME` file containing the domain name (e.g. `example.com`).
 
 Everything else (internal links, the remark base-path plugin, RSS/sitemap URLs) is derived from
 that config, so no other files need to change.

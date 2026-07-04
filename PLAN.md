@@ -1,4 +1,4 @@
-# Personal Website Implementation Plan — Rohit Anumula (doctor-ra)
+# Personal Website Implementation Plan — Rohit (doctor-ra)
 
 > **Instructions for the implementing model (e.g., Claude Sonnet):**
 > This document is the complete specification for building Rohit's personal website.
@@ -11,7 +11,7 @@
 
 ## 1. Context & Goals
 
-**Who:** Rohit Anumula — BS in Neuroscience, currently working toward medical school
+**Who:** Rohit — BS in Neuroscience, currently working toward medical school
 acceptance, with a strong side interest in programming (Python, data analysis,
 web dev bootcamp experience).
 
@@ -46,7 +46,7 @@ README repository*. Two hard constraints follow:
    Every internal link and asset URL must respect the base path. Astro handles
    this via `base: '/doctor-ra'` in config — always build hrefs with
    `import.meta.env.BASE_URL` or Astro's built-in path handling, never hardcode `/about`.
-   - If Rohit later buys a custom domain (e.g., `rohitanumula.com`), only
+   - If Rohit later buys a custom domain (e.g., `example.com`), only
      `site`/`base` in `astro.config.mjs` and a `CNAME` file change. Structure the
      code so this is a two-line change (single source of truth for base path).
 
@@ -189,7 +189,7 @@ Rules:
 `favicon.svg`: rounded square, `--accent` teal background (#0d9488), white bold
 "RA" (Inter 700) centered. Also use this mark at small size next to the name in
 the header. Generate `og-default.png` (1200×630): off-white background, "Rohit
-Anumula" large, tagline below, teal accent bar — can be produced with a small
+" large, tagline below, teal accent bar — can be produced with a small
 Node script using `sharp`/`satori` at build time, or committed as a static asset
 generated once (simpler — do that).
 
@@ -208,7 +208,7 @@ Footer: name + © year, links (GitHub, Email, RSS), and "Built with Astro" small
 
 1. **Hero** (no image required; if avatar used, pull `public/avatar.jpg` —
    `TODO(Rohit)`, ship without it):
-   - h1: `Rohit Anumula`
+   - h1: `Rohit`
    - Tagline (styled subtitle): `Neuroscience grad on the road to medicine. I also build things with code.`
    - Short paragraph (2–3 sentences, from §7.1 intro copy).
    - Two buttons: primary `About me →` (accent bg), secondary `View projects`
@@ -261,7 +261,7 @@ button back home. Must respect base path.
 
 ### 6.6 SEO / meta (in `BaseLayout`)
 
-Every page gets: `<title>` (`{pageTitle} · Rohit Anumula`, home = `Rohit Anumula — Neuroscience & Code`),
+Every page gets: `<title>` (`{pageTitle} · Rohit`, home = `Rohit — Neuroscience & Code`),
 meta description (per-page prop), canonical URL, OG + Twitter card tags
 (default `og-default.png`), `<link rel="sitemap">` (add `@astrojs/sitemap`),
 theme-color for both schemes, and JSON-LD `Person` on the home page
@@ -352,11 +352,11 @@ interesting, there's an [RSS feed](/rss.xml) — or just check back sometime.
 
 ```ts
 export const site = {
-  name: "Rohit Anumula",
+  name: "Rohit",
   handle: "doctor-ra",
   tagline: "Neuroscience grad on the road to medicine. I also build things with code.",
   url: "https://doctor-ra.github.io/doctor-ra", // update when custom domain exists
-  email: "investicord@gmail.com",               // TODO(Rohit): confirm public email
+  email: "<email withheld>",               // TODO(Rohit): confirm public email
   github: "https://github.com/doctor-ra",
   // linkedin: TODO(Rohit) — omit link until provided
 };
@@ -469,7 +469,7 @@ page's title/description/canonical.
 
 ## 10. Open items for Rohit (site ships without them)
 
-- [ ] Confirm public contact email (currently `investicord@gmail.com`).
+- [ ] Confirm public contact email (currently `<email withheld>`).
 - [ ] Headshot/avatar (`public/avatar.jpg`) — optional.
 - [ ] Resume PDF (`public/resume.pdf`) — nav/footer link only added once present.
 - [ ] Timeline years for degree start/graduation.
