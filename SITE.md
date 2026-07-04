@@ -63,6 +63,38 @@ https://doctor-ra.github.io/doctor-ra/
 **One-time setup**: in the repo's Settings → Pages, set **Source** to **GitHub Actions** (only
 needed once; skip if already configured).
 
+## Game leaderboard (optional shared database)
+
+The game at `/game` saves high scores in each visitor's own browser (localStorage) by default —
+no setup needed. To switch on a **global leaderboard shared by everyone who plays**, the site
+needs a small hosted database (GitHub Pages is static and can't store data itself). Free
+5-minute setup with [Supabase](https://supabase.com):
+
+1. Create a free Supabase account and a new project.
+2. In the project's **SQL Editor**, run:
+
+   ```sql
+   create table public.scores (
+     id bigint generated always as identity primary key,
+     name text not null check (char_length(name) between 1 and 20),
+     score integer not null check (score between 0 and 1000000),
+     created_at timestamptz not null default now()
+   );
+
+   alter table public.scores enable row level security;
+   create policy "anyone can read scores" on public.scores for select using (true);
+   create policy "anyone can add a score" on public.scores for insert with check (true);
+   ```
+
+3. In **Project Settings → API**, copy the **Project URL** and the **anon public** key into
+   `src/data/leaderboard.ts`, then commit and push. That's it — the game switches to the
+   shared board automatically.
+
+Notes: the anon key is designed to be public (the policies above only allow reading scores and
+adding new ones — nothing can be edited or deleted). Because anyone can submit a score, a
+determined prankster could post fake ones; for a fun toy leaderboard that's a reasonable
+trade-off. If it ever gets spammed, delete rows in the Supabase table editor.
+
 ## Switching to a custom domain
 
 If Rohit buys a custom domain later, only two things change:

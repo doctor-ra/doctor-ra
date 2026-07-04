@@ -4,3 +4,4 @@
 🛠 I also build things with code
 
 🌐 [My website](https://doctor-ra.github.io/doctor-ra/)
+🎮 [Play Synapse Runner](https://doctor-ra.github.io/doctor-ra/game/)

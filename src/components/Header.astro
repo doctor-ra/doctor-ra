@@ -9,6 +9,7 @@ const navItems = [
   { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Blog", href: "/blog" },
+  { label: "Game", href: "/game" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -23,10 +24,10 @@ const currentPath = Astro.url.pathname;
       class="flex items-center gap-2 text-[0.95rem] font-semibold tracking-tight text-text no-underline hover:text-text"
     >
       <span
-        class="flex h-7 w-7 items-center justify-center rounded-md bg-accent text-[0.7rem] font-bold text-white"
+        class="flex h-7 w-7 items-center justify-center rounded-md bg-accent text-[0.8rem] font-bold text-white"
         aria-hidden="true"
       >
-        RA
+        R
       </span>
       <span>{site.name}</span>
     </a>
