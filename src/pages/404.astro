@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+import { withBase } from "../utils/url";
+---
+
+<BaseLayout title={`404 · ${site.name}`} description="Page not found." noIndex={true}>
+  <div class="mx-auto flex max-w-3xl flex-col items-center px-6 py-32 text-center">
+    <p class="text-6xl font-bold tracking-tight text-accent">404</p>
+    <p class="mt-4 text-lg text-text-muted">
+      This page doesn't exist — maybe it's studying for the MCAT.
+    </p>
+    <a
+      href={withBase("/")}
+      class="mt-8 inline-flex items-center rounded-md bg-accent px-4 py-2 text-sm font-medium text-white no-underline transition-colors hover:bg-accent-hover"
+    >
+      Back home
+    </a>
+  </div>
+</BaseLayout>
