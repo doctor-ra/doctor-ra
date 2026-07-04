@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { withBase } from "../utils/url";
+import Icon from "./Icon.astro";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
+---
+
+<a
+  href={withBase(`/blog/${post.id}`)}
+  class="group block rounded-xl border border-border p-5 no-underline transition-all duration-150 ease-out hover:-translate-y-0.5 hover:border-accent/50"
+>
+  <div class="flex items-center gap-1.5 text-xs text-text-muted">
+    <Icon name="calendar" size={14} />
+    <time datetime={post.data.pubDate.toISOString()}>{formattedDate}</time>
+  </div>
+  <h3 class="mt-2 font-semibold text-text transition-colors group-hover:text-accent">
+    {post.data.title}
+  </h3>
+  <p class="mt-1.5 text-sm text-text-muted">{post.data.description}</p>
+</a>

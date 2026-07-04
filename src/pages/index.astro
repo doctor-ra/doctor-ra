@@ -1,10 +1,128 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import PostCard from "../components/PostCard.astro";
+import Icon from "../components/Icon.astro";
 import { site } from "../data/site";
+import { projects } from "../data/projects";
+import { withBase } from "../utils/url";
+
+const featuredProjects = projects.filter((p) => p.featured).slice(0, 2);
+
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  url: site.url,
+  sameAs: [site.github],
+};
 ---
 
-<BaseLayout title="Rohit Anumula — Neuroscience & Code" description={site.description}>
+<BaseLayout
+  title="Rohit Anumula — Neuroscience & Code"
+  description={site.description}
+  jsonLd={jsonLd}
+>
   <div class="mx-auto max-w-3xl px-6 py-16">
-    <h1 class="text-2xl font-semibold tracking-tight">Home (stub — Phase 2 fills this in)</h1>
+    <!-- Hero -->
+    <section class="animate-fade-up">
+      <h1 class="text-3xl font-semibold tracking-tight text-text sm:text-4xl">{site.name}</h1>
+      <p class="mt-3 text-lg text-text-muted">{site.tagline}</p>
+      <p class="mt-6 max-w-2xl text-base leading-relaxed text-text-muted">
+        I graduated with a BS in Neuroscience and I'm working toward medical school. Along
+        the way I fell for programming — so this site is where the two halves meet: the
+        journey to becoming a physician, and the things I build with code.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          href={withBase("/about")}
+          class="inline-flex items-center gap-1.5 rounded-md bg-accent px-4 py-2 text-sm font-medium text-white no-underline transition-colors hover:bg-accent-hover"
+        >
+          About me
+          <Icon name="arrow-right" size={16} />
+        </a>
+        <a
+          href={withBase("/projects")}
+          class="inline-flex items-center rounded-md border border-border px-4 py-2 text-sm font-medium text-text no-underline transition-colors hover:border-accent hover:text-accent"
+        >
+          View projects
+        </a>
+
+        <div class="ml-auto flex items-center gap-4">
+          <a
+            href={site.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            class="text-text-muted no-underline transition-colors hover:text-accent"
+          >
+            <Icon name="github" size={20} />
+          </a>
+          <a
+            href={`mailto:${site.email}`}
+            aria-label="Email"
+            class="text-text-muted no-underline transition-colors hover:text-accent"
+          >
+            <Icon name="mail" size={20} />
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Currently -->
+    <section class="mt-12">
+      <div class="rounded-xl border border-border bg-bg-elevated p-5">
+        <ul class="flex flex-col gap-2.5 text-sm text-text-muted">
+          <li>📚 Preparing my medical school application</li>
+          <li>🧠 Interested in the intersection of neuroscience &amp; software</li>
+          <li>🛠 Building small tools in Python</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Featured projects -->
+    <section class="mt-16">
+      <div class="flex items-center justify-between">
+        <SectionHeading title="Featured projects" />
+        <a
+          href={withBase("/projects")}
+          class="inline-flex items-center gap-1 text-sm text-text-muted no-underline hover:text-accent"
+        >
+          All projects
+          <Icon name="arrow-right" size={14} />
+        </a>
+      </div>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        {featuredProjects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </section>
+
+    <!-- Latest writing -->
+    {
+      posts.length > 0 && (
+        <section class="mt-16">
+          <div class="flex items-center justify-between">
+            <SectionHeading title="Latest writing" />
+            <a
+              href={withBase("/blog")}
+              class="inline-flex items-center gap-1 text-sm text-text-muted no-underline hover:text-accent"
+            >
+              All posts
+              <Icon name="arrow-right" size={14} />
+            </a>
+          </div>
+          <div class="mt-5 flex flex-col gap-4">
+            {posts.map((post) => <PostCard post={post} />)}
+          </div>
+        </section>
+      )
+    }
   </div>
 </BaseLayout>

@@ -1,0 +1,11 @@
+---
+interface Props {
+  title: string;
+  level?: "h2" | "h3";
+}
+
+const { title, level = "h2" } = Astro.props;
+const Tag = level;
+---
+
+<Tag class="text-lg font-semibold tracking-tight text-text">{title}</Tag>
