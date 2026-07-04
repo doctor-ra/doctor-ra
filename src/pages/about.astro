@@ -1,10 +1,92 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import TimelineItem from "../components/TimelineItem.astro";
+import SectionHeading from "../components/SectionHeading.astro";
 import { site } from "../data/site";
+import { timeline } from "../data/timeline";
+
+const scienceSkills = ["Neuroscience", "Research methods", "Data analysis", "Scientific writing"];
+const codeSkills = ["Python", "Jupyter", "HTML/CSS", "JavaScript", "Git & GitHub"];
 ---
 
-<BaseLayout title={`About · ${site.name}`} description={site.description}>
+<BaseLayout
+  title={`About · ${site.name}`}
+  description="Neuroscience grad working toward medical school, with a side interest in programming."
+>
   <div class="mx-auto max-w-3xl px-6 py-16">
-    <h1 class="text-2xl font-semibold tracking-tight">About (stub — Phase 3 fills this in)</h1>
+    <h1 class="text-2xl font-semibold tracking-tight text-text">About</h1>
+
+    <div class="prose mt-6">
+      <p>
+        Hi, I'm Rohit. I studied neuroscience because I wanted to understand the organ that
+        makes us who we are — and the more I learned, the more certain I became that I want to
+        spend my career in medicine. Right now, my focus is earning a seat in medical school.
+      </p>
+      <p>
+        Somewhere between lab courses and lecture halls, I discovered programming. What
+        started as curiosity became a real skill set: I've worked through a web development
+        bootcamp, analyzed research data in Jupyter notebooks, and built small tools in
+        Python. I think the ability to reason about both neurons and code will only become
+        more valuable in medicine.
+      </p>
+      <p>
+        This site is my home on the internet — a record of the journey, the projects, and the
+        occasional thing I can't stop thinking about.
+      </p>
+    </div>
+
+    <section class="mt-16">
+      <SectionHeading title="Journey" />
+      <div class="mt-7 flex flex-col">
+        {timeline.map((entry) => <TimelineItem entry={entry} />)}
+      </div>
+    </section>
+
+    <section class="mt-16">
+      <SectionHeading title="Toolbox" />
+      <div class="mt-5 flex flex-col gap-4">
+        <div>
+          <h3 class="text-sm font-medium text-text-muted">Science</h3>
+          <div class="mt-2 flex flex-wrap gap-2">
+            {
+              scienceSkills.map((s) => (
+                <span class="rounded-full border border-border px-2.5 py-0.5 text-xs text-text-muted">
+                  {s}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+        <div>
+          <h3 class="text-sm font-medium text-text-muted">Code</h3>
+          <div class="mt-2 flex flex-wrap gap-2">
+            {
+              codeSkills.map((s) => (
+                <span class="rounded-full border border-border px-2.5 py-0.5 text-xs text-text-muted">
+                  {s}
+                </span>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-16">
+      <SectionHeading title="Beyond the desk" />
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-text-muted">
+        Outside of studying and coding, I'm usually reading, at the gym, or going down a
+        Wikipedia rabbit hole.
+      </p>
+    </section>
+
+    <section class="mt-16 border-t border-border pt-10">
+      <p class="text-text-muted">
+        Want to get in touch? Email me at <a
+          href={`mailto:${site.email}`}
+          class="text-accent underline hover:text-accent-hover"
+        >{site.email}</a>.
+      </p>
+    </section>
   </div>
 </BaseLayout>
