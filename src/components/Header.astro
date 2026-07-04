@@ -1,0 +1,87 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+import { withBase, isActivePath } from "../utils/url";
+
+const navItems = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Projects", href: "/projects" },
+  { label: "Blog", href: "/blog" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur supports-[backdrop-filter]:bg-bg/70"
+>
+  <div class="mx-auto flex max-w-3xl items-center justify-between px-6 py-4">
+    <a
+      href={withBase("/")}
+      class="flex items-center gap-2 text-[0.95rem] font-semibold tracking-tight text-text no-underline hover:text-text"
+    >
+      <span
+        class="flex h-7 w-7 items-center justify-center rounded-md bg-accent text-[0.7rem] font-bold text-white"
+        aria-hidden="true"
+      >
+        RA
+      </span>
+      <span>{site.name}</span>
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+      {
+        navItems.map((item) => {
+          const active = isActivePath(currentPath, item.href);
+          return (
+            <a
+              href={withBase(item.href)}
+              aria-current={active ? "page" : undefined}
+              class={`text-sm no-underline transition-colors ${
+                active ? "font-medium text-accent" : "text-text-muted hover:text-text"
+              }`}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+      <ThemeToggle />
+    </nav>
+
+    <div class="flex items-center gap-2 md:hidden">
+      <ThemeToggle />
+      <details class="group relative">
+        <summary
+          class="flex h-9 w-9 list-none items-center justify-center rounded-md border border-border text-text-muted marker:content-[''] hover:text-text [&::-webkit-details-marker]:hidden"
+          aria-label="Open menu"
+        >
+          <Icon name="menu" size={18} />
+        </summary>
+        <nav
+          class="absolute right-0 z-50 mt-2 flex w-44 flex-col gap-1 rounded-lg border border-border bg-bg-elevated p-2 shadow-sm"
+          aria-label="Mobile"
+        >
+          {
+            navItems.map((item) => {
+              const active = isActivePath(currentPath, item.href);
+              return (
+                <a
+                  href={withBase(item.href)}
+                  aria-current={active ? "page" : undefined}
+                  class={`rounded-md px-3 py-2 text-sm no-underline transition-colors ${
+                    active ? "font-medium text-accent" : "text-text-muted hover:bg-bg hover:text-text"
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })
+          }
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

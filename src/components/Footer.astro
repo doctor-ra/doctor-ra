@@ -1,0 +1,45 @@
+---
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+import { withBase } from "../utils/url";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border">
+  <div
+    class="mx-auto flex max-w-3xl flex-col items-center gap-4 px-6 py-10 text-sm text-text-muted sm:flex-row sm:justify-between"
+  >
+    <p>&copy; {year} {site.name}</p>
+
+    <div class="flex items-center gap-4">
+      <a
+        href={site.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub"
+        class="no-underline text-text-muted transition-colors hover:text-accent"
+      >
+        <Icon name="github" size={18} />
+      </a>
+      <a
+        href={`mailto:${site.email}`}
+        aria-label="Email"
+        class="no-underline text-text-muted transition-colors hover:text-accent"
+      >
+        <Icon name="mail" size={18} />
+      </a>
+      <a
+        href={withBase("/rss.xml")}
+        aria-label="RSS feed"
+        class="no-underline text-text-muted transition-colors hover:text-accent"
+      >
+        <Icon name="rss" size={18} />
+      </a>
+    </div>
+
+    <p class="text-xs text-text-muted">
+      Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-text-muted underline hover:text-accent">Astro</a>
+    </p>
+  </div>
+</footer>

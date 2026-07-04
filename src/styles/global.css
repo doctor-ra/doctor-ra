@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --font-sans: "Inter Variable", Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --bg: #fafaf9;
+  --bg-elevated: #ffffff;
+  --text: #1c1917;
+  --text-muted: #57534e;
+  --border: #e7e5e4;
+  --accent: #0d9488;
+  --accent-hover: #0f766e;
+  color-scheme: light;
+}
+
+:root.dark {
+  --bg: #0c0a09;
+  --bg-elevated: #1c1917;
+  --text: #f5f5f4;
+  --text-muted: #a8a29e;
+  --border: #292524;
+  --accent: #2dd4bf;
+  --accent-hover: #5eead4;
+  color-scheme: dark;
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--bg-elevated);
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  background-color: var(--accent);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  transition: top 150ms ease;
+}
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Icons */
+.icon-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Prose (blog post / long-form content) */
+.prose {
+  max-width: 65ch;
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 1rem;
+}
+.prose > * + * {
+  margin-top: 1.25em;
+}
+.prose h1,
+.prose h2,
+.prose h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-top: 2em;
+  margin-bottom: 0.6em;
+  line-height: 1.3;
+}
+.prose h1 {
+  font-size: 1.5rem;
+}
+.prose h2 {
+  font-size: 1.3rem;
+}
+.prose h3 {
+  font-size: 1.1rem;
+}
+.prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose a:hover {
+  color: var(--accent-hover);
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+}
+.prose ul {
+  list-style: disc;
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose blockquote {
+  border-left: 3px solid var(--accent);
+  padding-left: 1em;
+  color: var(--text-muted);
+  font-style: italic;
+}
+.prose code {
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  padding: 0.125em 0.375em;
+  font-size: 0.875em;
+}
+.prose pre {
+  padding: 1em;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  font-size: 0.875em;
+}
+.prose pre code {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+.prose img {
+  border-radius: 0.5rem;
+}
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--border);
+}
+
+/* Dual-theme Shiki code blocks, keyed off the class-based dark toggle */
+.prose .astro-code,
+.prose .astro-code span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+:root.dark .prose .astro-code,
+:root.dark .prose .astro-code span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+/* Motion */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-up {
+    animation: fade-up 500ms ease both;
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Timeline connector */
+.timeline-item {
+  position: relative;
+  padding-left: 1.75rem;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 0.4rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: var(--accent);
+}
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  left: 0.47rem;
+  top: 1rem;
+  bottom: -1.5rem;
+  width: 1px;
+  background-color: var(--border);
+}
+.timeline-item:last-child::after {
+  display: none;
+}
