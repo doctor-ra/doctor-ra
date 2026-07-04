@@ -8,6 +8,6 @@
  * designed to be public; it only allows what the database policies permit.
  */
 export const leaderboardConfig = {
-  supabaseUrl: "", // e.g. "https://abcdefgh.supabase.co"
-  supabaseAnonKey: "",
+  supabaseUrl: "", // e.g. "https://abcdefgh.supabase.co" — from Supabase: Project Settings → Data API → Project URL
+  supabaseAnonKey: "sb_publishable_spqHBQXPFhSzeqbtSOMwOw_7-4cfvpB",
 };

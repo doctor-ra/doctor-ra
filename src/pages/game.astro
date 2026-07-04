@@ -271,6 +271,12 @@ import { site } from "../data/site";
   // --- Leaderboard (shared via Supabase when configured, else this browser only) ---
   const cfg = leaderboardConfig;
   const shared = Boolean(cfg.supabaseUrl && cfg.supabaseAnonKey);
+  // Legacy anon keys are JWTs and want an Authorization header; new
+  // sb_publishable_* keys are sent via the apikey header alone.
+  const apiHeaders = { apikey: cfg.supabaseAnonKey };
+  if (cfg.supabaseAnonKey.startsWith("eyJ")) {
+    apiHeaders.Authorization = "Bearer " + cfg.supabaseAnonKey;
+  }
   lbMode.textContent = shared
     ? "Global leaderboard — top 10 runs from everyone who plays."
     : "Scores are saved in your browser for now.";
@@ -287,7 +293,7 @@ import { site } from "../data/site";
     if (shared) {
       const res = await fetch(
         cfg.supabaseUrl + "/rest/v1/scores?select=name,score&order=score.desc&limit=10",
-        { headers: { apikey: cfg.supabaseAnonKey, Authorization: "Bearer " + cfg.supabaseAnonKey } },
+        { headers: apiHeaders },
       );
       if (!res.ok) throw new Error("leaderboard fetch failed");
       return res.json();
@@ -308,12 +314,7 @@ import { site } from "../data/site";
     if (shared) {
       const res = await fetch(cfg.supabaseUrl + "/rest/v1/scores", {
         method: "POST",
-        headers: {
-          apikey: cfg.supabaseAnonKey,
-          Authorization: "Bearer " + cfg.supabaseAnonKey,
-          "Content-Type": "application/json",
-          Prefer: "return=minimal",
-        },
+        headers: { ...apiHeaders, "Content-Type": "application/json", Prefer: "return=minimal" },
         body: JSON.stringify([{ name, score: scoreVal }]),
       });
       if (!res.ok) throw new Error("score submit failed");
