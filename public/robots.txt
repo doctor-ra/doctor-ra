@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://doctor-ra.github.io/doctor-ra/sitemap-index.xml
+Sitemap: https://doctor-ra.example/sitemap-index.xml

@@ -9,9 +9,8 @@ practice that.
 
 I built this site for two reasons. First, I wanted one place that tells my
 story better than a profile page can: neuroscience degree, medical school
-ambitions, and a genuine love of programming. Second, I wanted a place to
-write — about the application journey, about things I learn, and about the
-odd corners where medicine and software overlap.
+ambitions, and the road between them. Second, I wanted a place to write —
+about the application journey and about the things I learn along the way.
 
 Expect posts to be short, occasional, and honest. If any of that sounds
 interesting, there's an [RSS feed](/rss.xml) — or just check back sometime.

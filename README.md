@@ -1,7 +1,6 @@
-### Hi, I'm Rohit 👋
+### hey, I'm doctor 👋
 
-🧠 Neuroscience grad → 🩺 working toward medical school
-🛠 I also build things with code
+🛠 I build small, sharp things for the web
 
-🌐 [My website](https://doctor-ra.github.io/doctor-ra/)
-🎮 [Play Synapse Runner](https://doctor-ra.github.io/doctor-ra/game/)
+🌐 [doctor-ra.github.io](https://doctor-ra.github.io)
+🎮 [Play Byte Blaster](https://doctor-ra.github.io/game/)

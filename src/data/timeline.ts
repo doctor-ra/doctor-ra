@@ -11,11 +11,6 @@ export const timeline: TimelineEntry[] = [
     description: "Chose the brain as a major. No regrets.",
   },
   {
-    when: "2020",
-    title: "First lines of code",
-    description: "Started teaching myself web development; completed bootcamp projects.",
-  },
-  {
     when: "2022",
     title: "NURP research",
     description: "Undergraduate research program — first taste of real data analysis.",
@@ -28,7 +23,6 @@ export const timeline: TimelineEntry[] = [
   {
     when: "Now",
     title: "Road to medical school",
-    description:
-      "Preparing applications and sharpening both stethoscope-adjacent and software skills.",
+    description: "Preparing applications and putting in the work, one day at a time.",
   },
 ];
