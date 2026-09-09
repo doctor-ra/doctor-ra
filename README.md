@@ -1,6 +1,6 @@
 ### hey, I'm doctor 👋
 
-🛠 coming next: bling bling boy
+🛠 what I do.
 
 🌐 [doctor-ra.github.io](https://doctor-ra.github.io)
 🎮 [Play Byte Blaster](https://doctor-ra.github.io/game/)
