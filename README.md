@@ -1,6 +1,6 @@
 ### hey, I'm doctor 👋
 
-🛠 444 not a goat 222 www elegy no sloop in the back to dive wet ritz usurp pizza
+🛠 444 not a goat 222 www elegy no sloop in the back to dive wet ritz usurp pizza snack
 
 🌐 [doctor-ra.github.io](https://doctor-ra.github.io)
 🎮 [Play Byte Blaster](https://doctor-ra.github.io/game/)
